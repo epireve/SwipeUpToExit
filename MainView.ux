@@ -1,0 +1,28 @@
+<App>
+	<Panel>
+		<SwipeGesture ux:Name="swipe" Direction="Up" Type="Active" />
+		<Rectangle Width="100%" Height="100%" Color="#87A7EA" ux:Name="Rect">
+			<SwipingAnimation Source="swipe">
+			    <!-- <Move RelativeTo="Size" Easing="QuadraticOut" Duration="0">
+						<Keyframe Y="0" Time=".2"/>
+					</Move> -->
+					<Change Rect.CornerRadius="10" Duration="0.5" Easing="QuadraticInOut"  Y="0.1" />
+					<Scale Factor=".8" />
+			</SwipingAnimation>
+			<Shadow Angle="90" Size="10" />
+			<NativeViewHost>
+            <WebView Dock="Fill" Url="http://www.google.com">
+                <PageLoaded>
+                    <EvaluateJS Handler="{onPageLoaded}">
+                        var result = {
+                            url : document.location.href
+                        };
+                        return result;
+                    </EvaluateJS>
+                </PageLoaded>
+            </WebView>
+        </NativeViewHost>
+		</Rectangle>
+		<Text Value="Back" Color="#2D384F" Margin="20" />
+	</Panel>
+</App>
